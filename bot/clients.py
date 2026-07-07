@@ -1,5 +1,5 @@
 from binance.client import Client
-import logging_config as lc
+from bot import logging_config as lc
 import shutil
 
 
@@ -14,13 +14,14 @@ class TradingClient:
             self.client = Client(
                 api_key=self.api_key,
                 api_secret=self.api_secret,
-                testnet=True
+                testnet=True,
+                demo=True
             )
             print(
                 f"Initialized Successfull!!\nThis is the server time: {self.client.get_server_time()}"
             )
-            columns = shutil.get_terminal_size().columns
-            print("Welcome to the Bot".center(columns))
+            # columns = shutil.get_terminal_size().columns
+            # print("Welcome to the Bot".center(columns))
 
         except Exception as e:
             print(f"Connection failed Error: {e}")

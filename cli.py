@@ -1,5 +1,4 @@
 import argparse
-import bot.logging_config as lc
 from bot.clients import TradingClient
 from bot.orders import OrderManager
 from bot.validators import validate_orders
