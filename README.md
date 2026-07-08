@@ -3,7 +3,7 @@
 Lightweight CLI trading bot for Binance Futures (testnet). Intended for testing and learning only — do not use with real funds without careful review.
 
 **What this project contains**
-- `cli.py`: command-line entrypoint to place MARKET, LIMIT, STOP, and TAKE_PROFIT_LIMIT orders.
+- `cli.py`: command-line entrypoint to place MARKET, LIMIT, and STOP orders.
 - `requirements.txt`: Python dependencies used by the project.
 - `binanceApp/`: not committed — virtual environment is not included. Create a local virtual environment instead (see Local setup).
 - `bot/` package:
@@ -78,18 +78,15 @@ python cli.py --symbol BTCUSDT --side SELL --type LIMIT --quantity 0.001 --price
 
 # STOP order example:
 python cli.py --symbol BTCUSDT --side SELL --type STOP --quantity 0.001 --price 59500 --stopPrice 60000
-
-# TAKE_PROFIT_LIMIT example:
-python cli.py --symbol BTCUSDT --side SELL --type TAKE_PROFIT_LIMIT --quantity 0.001 --price 59500 --stopPrice 60000
 ```
 
 Command notes:
 - `--symbol`: trading pair (e.g., `BTCUSDT`)
 - `--side`: `BUY` or `SELL`
-- `--type`: `MARKET`, `LIMIT`, `STOP`, or `TAKE_PROFIT_LIMIT`
+- `--type`: `MARKET`, `LIMIT`, or `STOP`
 - `--quantity`: order quantity
-- `--price`: required for `LIMIT`, `STOP`, and `TAKE_PROFIT_LIMIT` orders
-- `--stopPrice`: optional trigger price for `STOP` and `TAKE_PROFIT_LIMIT` orders
+- `--price`: required for `LIMIT` and `STOP` orders
+- `--stopPrice`: optional trigger price for `STOP` orders
 
 **Key files (quick links)**
 - [cli.py](cli.py)

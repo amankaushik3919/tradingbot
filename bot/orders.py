@@ -24,7 +24,7 @@ class OrderManager:
             'quantity': float(quantity)
         }
 
-        if order_type.upper() in ['LIMIT', 'STOP', 'TAKE_PROFIT_LIMIT']:
+        if order_type.upper() in ['LIMIT', 'STOP']:
             if price is None:
                 raise ValueError("Price is required for this order type.")
             params['price'] = str(price)
