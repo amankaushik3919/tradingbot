@@ -7,7 +7,7 @@ class OrderManager:
     def __init__(self, client_instance):
         self.client = client_instance
 
-    def place_order(self, symbol, side, order_type, quantity, price=None):
+    def place_order(self, symbol, side, order_type, quantity, price=None, stop_price=None):
         # 1. Ensure logs directory exists
         if not os.path.exists('logs'):
             os.makedirs('logs')
@@ -24,12 +24,14 @@ class OrderManager:
             'quantity': float(quantity)
         }
 
-        if order_type.upper() == 'LIMIT':
+        if order_type.upper() in ['LIMIT', 'STOP', 'TAKE_PROFIT_LIMIT']:
             if price is None:
-                raise ValueError("Price is required for LIMIT orders.")
+                raise ValueError("Price is required for this order type.")
             params['price'] = str(price)
             params['timeInForce'] = 'GTC'
 
+        if stop_price is not None:
+            params['stopPrice'] = str(stop_price)
         # 4. Open file and log execution
         with open(filename, 'w') as f:
             def log_and_print(message):
@@ -38,7 +40,7 @@ class OrderManager:
 
             log_and_print(f"--- Order Request Summary ---")
             log_and_print(
-                f"Request: {params['type']} {params['side']} {params['symbol']} Qty: {params['quantity']}")
+                f"Request: {params['type']} {params['side']} {params['symbol']} Qty: {params['quantity']} Stop Price: {params['stopPrice']}")
             if 'price' in params:
                 log_and_print(f"Price: {params['price']}")
             log_and_print("------------------------------")
