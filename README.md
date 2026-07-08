@@ -47,8 +47,8 @@ YOUR_TESTNET_API_SECRET
 Notes:
 - The project is configured to use Binance testnet. Ensure you use testnet keys/endpoints.
 - Current code reads credentials only from `bot/secrets.txt`.
-- Example files `bot/secrets.txt.example` and `.env.example` are included for reference, but `.env` support is not automatically loaded by the current code.
-- To use `.env`, you must modify `bot/logging_config.py` to read `BINANCE_API_KEY` and `BINANCE_API_SECRET`.
+- Example files `bot/secrets.txt.example` and `.env.example` are included for reference; `.env` is not loaded by the current code.
+- To use `.env`, modify `bot/logging_config.py` to load `BINANCE_API_KEY` and `BINANCE_API_SECRET`.
 
 **Environment variable template**
 - `.env.example` is provided as a template only; the code does not automatically load it.

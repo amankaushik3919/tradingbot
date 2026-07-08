@@ -12,7 +12,7 @@ def main():
                         choices=["BUY", "SELL"], help="BUY or SELL")
     parser.add_argument('--type',
                         choices=['MARKET', 'LIMIT',
-                                 'STOP', 'TAKE_PROFIT_LIMIT'],
+                                 'STOP'],
                         required=True,
                         help='Order type')
     parser.add_argument("--quantity", required=True,
